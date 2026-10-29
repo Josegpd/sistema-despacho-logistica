@@ -85,7 +85,33 @@ def menu_despacho():
     print("5. Ver estado del almacén y camiones")
     print("6. Salir")
     print("-" * 50)
-    print("Seleccione una opción (1-6): ")
+    print("Seleccione una opción (1-6): ", end=' ')
+
+def apilar(caja):
+    almacen.push(caja)
+    print(f"-> Caja [{caja}] apilada con éxito.\n")
+
+
+def retirar_caja():
+    if not almacen.empty():
+        caja_retirada = almacen.pop()
+        print(f"\n-> Caja [{caja_retirada}] retirada con exito.\n")
+    else: 
+        print("\n[!] Error: El almacén está vacío (no hay cajas que retirar).\n")
+        
+def mostrar_estado():
+    print("")
+    print("*" * 50)
+    print("ESTADO ACTUAL:")
+    
+    # Mostramos la pila de la cima a la base
+    # Hacemos una copia invertida para no alterar la original
+    pila_temp = list(reversed(almacen.stack))
+    print(f"- Cajas apiladas (Cima -> Base): {pila_temp}")
+    
+    # Mostramos la cola del frente al fin
+    print(f"- Fila de camiones (Frente -> Fin): {bahia_camiones}")
+    print("*" * 50, end="\n\n")
 
 almacen = Stack()
 bahia_camiones = Queue()
@@ -93,8 +119,7 @@ bahia_camiones = Queue()
 while(True):
     menu_despacho()
 
-    # Validar que la entrada proporcionada sea un numero
-    # y este en el rango de opciones
+    # Validar que la entrada sea un numero y este en el rango de opciones
     while(True):
         entrada = input()
         if entrada.isdigit() and 1 <= int(entrada) <= 6:
@@ -104,33 +129,17 @@ while(True):
             print("\nOpción invalida. Elija una opcion valida (1-6).\n")
 
     if(opcion == 1):
-        pass
+        caja = input("\nNombre de la caja: ")
+        apilar(caja)
     elif(opcion == 2):
-        pass
+        retirar_caja()
     elif(opcion == 3):
         pass
     elif(opcion == 4):
         pass
     elif(opcion == 5):
-        pass
+        mostrar_estado()
     elif(opcion == 6):
         print("\nSaliendo...")
         print("Gracias por usar el programa. ¡Hasta luego!")
         break
-    
-# apilar caja 
-if opcion ==1:
-   caja = input('Nombre de la caja: ')
-   almacen.push(caja)
-   print(f"-> Caja [{caja}] apilada con exito. ")
-
-
-#retirar caja
-elif opcion ==  2: 
-    if not almacen.empty():
-        caja_retirada = almacen.pop()
-        print(f'-> Caja [{caja_retirada}] retirada con exito.')
-else: 
-        print('[!] Error: El almacén está vacío (no hay cajas que retirar).')
-    
-    
