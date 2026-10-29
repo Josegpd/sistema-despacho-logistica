@@ -98,6 +98,20 @@ def retirar_caja():
         print(f"\n-> Caja [{caja_retirada}] retirada con exito.\n")
     else: 
         print("\n[!] Error: El almacén está vacío (no hay cajas que retirar).\n")
+        
+def mostrar_estado():
+    print("")
+    print("*" * 50)
+    print("ESTADO ACTUAL:")
+    
+    # Mostramos la pila de la cima a la base
+    # Hacemos una copia invertida para no alterar la original
+    pila_temp = list(reversed(almacen.stack))
+    print(f"- Cajas apiladas (Cima -> Base): {pila_temp}")
+    
+    # Mostramos la cola del frente al fin
+    print(f"- Fila de camiones (Frente -> Fin): {bahia_camiones}")
+    print("*" * 50, end="\n\n")
 
 almacen = Stack()
 bahia_camiones = Queue()
@@ -124,7 +138,7 @@ while(True):
     elif(opcion == 4):
         pass
     elif(opcion == 5):
-        pass
+        mostrar_estado()
     elif(opcion == 6):
         print("\nSaliendo...")
         print("Gracias por usar el programa. ¡Hasta luego!")
