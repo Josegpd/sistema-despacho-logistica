@@ -131,10 +131,10 @@ almacen = Stack()
 bahia_camiones = Queue()
 
 while(True):
-    menu_despacho()
 
     # Validar que la entrada sea un numero y este en el rango de opciones
     while(True):
+        menu_despacho()
         entrada = input()
         if entrada.isdigit() and 1 <= int(entrada) <= 6:
             opcion = int(entrada)
