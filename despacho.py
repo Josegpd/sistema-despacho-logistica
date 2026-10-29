@@ -99,10 +99,12 @@ def retirar_caja():
     else: 
         print("\n[!] Error: El almacén está vacío (no hay cajas que retirar).\n")
 
+# Encolar un camion en la bahia (FIFO)
 def encolar_camion(camion):
     bahia_camiones.enqueue(camion)
     print(f"-> Camión [{camion}] formado en la fila.\n")
 
+# Despachar el primer camion de la fila
 def despachar_camion():
     if not bahia_camiones.empty():
         camion_despachado = bahia_camiones.front()
@@ -146,9 +148,11 @@ while(True):
     elif(opcion == 2):
         retirar_caja()
     elif(opcion == 3):
+        # Operacion 3: Encolar camion
         camion = input("\nPlaca o identificador del camión: ")
         encolar_camion(camion)
     elif(opcion == 4):
+        # Operacion 4: Despachar camion
         despachar_camion()
     elif(opcion == 5):
         mostrar_estado()
