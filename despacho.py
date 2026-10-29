@@ -117,3 +117,20 @@ while(True):
         print("\nSaliendo...")
         print("Gracias por usar el programa. ¡Hasta luego!")
         break
+    
+# apilar caja 
+if opcion ==1:
+   caja = input('Nombre de la caja: ')
+   almacen.push(caja)
+   print(f"-> Caja [{caja}] apilada con exito. ")
+
+
+#retirar caja
+elif opcion ==  2: 
+    if not almacen.empty():
+        caja_retirada = almacen.pop()
+        print(f'-> Caja [{caja_retirada}] retirada con exito.')
+else: 
+        print('[!] Error: El almacén está vacío (no hay cajas que retirar).')
+    
+    
