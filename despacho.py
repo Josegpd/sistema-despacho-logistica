@@ -98,6 +98,18 @@ def retirar_caja():
         print(f"\n-> Caja [{caja_retirada}] retirada con exito.\n")
     else: 
         print("\n[!] Error: El almacén está vacío (no hay cajas que retirar).\n")
+
+def encolar_camion(camion):
+    bahia_camiones.enqueue(camion)
+    print(f"-> Camión [{camion}] formado en la fila.\n")
+
+def despachar_camion():
+    if not bahia_camiones.empty():
+        camion_despachado = bahia_camiones.front()
+        bahia_camiones.dequeue()
+        print(f"\n-> Camión [{camion_despachado}] despachado con éxito.\n")
+    else:
+        print("\n[!] Error: No hay camiones esperando turno.\n")
         
 def mostrar_estado():
     print("")
@@ -134,9 +146,10 @@ while(True):
     elif(opcion == 2):
         retirar_caja()
     elif(opcion == 3):
-        pass
+        camion = input("\nPlaca o identificador del camión: ")
+        encolar_camion(camion)
     elif(opcion == 4):
-        pass
+        despachar_camion()
     elif(opcion == 5):
         mostrar_estado()
     elif(opcion == 6):
